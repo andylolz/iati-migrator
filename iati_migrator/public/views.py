@@ -1,6 +1,7 @@
 """Public section, including homepage and signup."""
 from os.path import abspath, dirname, join
 from io import BytesIO
+import re
 
 from flask import Blueprint, render_template, request, flash
 import iatikit
@@ -23,24 +24,24 @@ def home():
     if not source:
         return render_template('public/home.html')
 
+    error_msg = None
+    result = ''
     source_data = BytesIO(source.encode())
     dataset = iatikit.Dataset(source_data)
     if not dataset.validate_xml():
-        flash('Data is not valid XML', 'danger')
+        error_msg = 'Input data is not valid XML.'
+    elif not dataset.version.startswith('1'):
+        error_msg = 'Input data is not IATI v1.0x.'
+    elif not dataset.validate_iati():
+        error_msg = 'Input data is not valid IATI'
+    elif not dataset.validate_codelists():
+        error_msg = 'Input data uses invalid codelist values'
+
+    if error_msg:
+        flash(error_msg, 'danger')
         return render_template('public/home.html',
                                source=source)
-    if not dataset.version.startswith('1'):
-        flash('Data is not IATI v1.0x', 'danger')
-        return render_template('public/home.html',
-                               source=source)
-    if not dataset.validate_iati():
-        flash('Data is not valid IATI', 'danger')
-        return render_template('public/home.html',
-                               source=source)
-    if not dataset.validate_codelists():
-        flash('Data uses invalid codelist values', 'danger')
-        return render_template('public/home.html',
-                               source=source)
+
     xsd_path = join(basedir, '..', 'static', 'iati-activities.xsl')
     transform = etree.XSLT(etree.parse(xsd_path))
     transformed = transform(dataset.etree)
@@ -48,16 +49,18 @@ def home():
     result_data = BytesIO(bytes(transformed))
     dataset = iatikit.Dataset(result_data)
     if not dataset.validate_xml():
-        flash('There was a problem! Result not valid XML', 'danger')
-        return render_template('public/home.html',
-                               source=source, result=result)
-    print(dataset.validate_iati().errors[0].details)
-    if not dataset.validate_iati():
-        flash('The data was migrated, but has schema validation issues', 'danger')
-        return render_template('public/home.html',
-                               source=source, result=result)
-    if not dataset.validate_codelists():
-        flash('The data was migrated, but has codelist issues', 'danger')
+        error_msg = 'There was a problem! Result data not valid XML'
+    elif not dataset.validate_iati():
+        error_msg = 'The data was migrated, but has schema validation issues'
+        match_re = re.compile(r'Expected is \( ([^ ]+) \)')
+        match = match_re.search(dataset.validate_iati().errors[0].original_msg)
+        if match:
+            error_msg += ' (e.g. it\'s missing a `{}` element.)'.format(match.group(1))
+    elif not dataset.validate_codelists():
+        error_msg = 'The data was migrated, but has codelist issues'
+
+    if error_msg:
+        flash(error_msg, 'danger')
         return render_template('public/home.html',
                                source=source, result=result)
 
