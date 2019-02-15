@@ -12,20 +12,17 @@ blueprint = Blueprint('public', __name__,  # pylint: disable=invalid-name
                       static_folder='../static')
 
 
-@blueprint.route('/')
+@blueprint.route('/', methods=['GET', 'POST'])
 def home():
     """Show the home page."""
-    return render_template('public/home.html')
-
-
-@blueprint.route('/result/', methods=['GET', 'POST'])
-def upload():
-    """Upload a dataset for validation."""
     if request.method == 'POST':
         form_data = request.form
     else:
         form_data = request.args
     source = form_data.get('source')
+    if not source:
+        return render_template('public/home.html')
+
     source_data = BytesIO(source.encode())
     dataset = iatikit.Dataset(source_data)
     if not dataset.validate_xml():

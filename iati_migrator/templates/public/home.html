@@ -14,7 +14,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <form action="{{ url_for('public.upload') }}" method="POST">
+      <form action="{{ url_for('public.home') }}" method="POST">
         <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
         <div class="form-group">
           <label class="control-label" for="id_source">Paste IATI v1.0x activity XML:</label>
