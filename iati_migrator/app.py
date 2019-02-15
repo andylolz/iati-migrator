@@ -18,7 +18,6 @@ def create_app(config_object='iati_migrator.settings'):
     register_extensions(app)
     register_blueprints(app)
     register_errorhandlers(app)
-    register_template_filters(app)
     return app
 
 
@@ -32,10 +31,6 @@ def register_extensions(app):
 def register_blueprints(app):
     """Register Flask blueprints."""
     app.register_blueprint(public.views.blueprint)
-
-
-def register_template_filters(app):
-    pass
 
 
 def register_errorhandlers(app):
