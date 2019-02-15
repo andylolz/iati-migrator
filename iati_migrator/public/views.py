@@ -33,9 +33,9 @@ def home():
     elif not dataset.version.startswith('1'):
         error_msg = 'Input data is not IATI v1.0x.'
     elif not dataset.validate_iati():
-        error_msg = 'Input data is not valid IATI'
+        error_msg = 'Input data is not valid to the IATI schema.'
     elif not dataset.validate_codelists():
-        error_msg = 'Input data uses invalid codelist values'
+        error_msg = 'Input data uses invalid codelist values.'
 
     if error_msg:
         flash(error_msg, 'danger')
@@ -49,22 +49,24 @@ def home():
     result_data = BytesIO(bytes(transformed))
     dataset = iatikit.Dataset(result_data)
     if not dataset.validate_xml():
-        error_msg = 'There was a problem! Result data not valid XML'
+        error_msg = 'There was a problem! Result data not valid XML.'
     elif not dataset.validate_iati():
         error_msg = 'The data was migrated, but has schema validation issues'
         match_re = re.compile(r'Expected is \( ([^ ]+) \)')
         match = match_re.search(dataset.validate_iati().errors[0].original_msg)
         if match:
             error_msg += ' (e.g. it\'s missing a `{}` element.)'.format(match.group(1))
+        else:
+            error_msg += '.'
     elif not dataset.validate_codelists():
-        error_msg = 'The data was migrated, but has codelist issues'
+        error_msg = 'The data was migrated, but has codelist issues.'
 
     if error_msg:
         flash(error_msg, 'danger')
         return render_template('public/home.html',
                                source=source, result=result)
 
-    flash('Successfully migrated!', 'success')
+    flash('Data successfully migrated!', 'success')
     return render_template('public/home.html',
                            source=source,
                            result=result)
