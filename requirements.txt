@@ -1,0 +1,6 @@
+# Flask
+Flask==1.0.2
+
+# Application
+requests==2.21.0
+-e git+https://github.com/pwyf/iatikit.git@dev#egg=iatikit
