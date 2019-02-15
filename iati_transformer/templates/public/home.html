@@ -5,11 +5,10 @@
 {% block content %}
 <section class="jumbotron text-center">
   <div class="container">
-    <h1 class="jumbotron-heading">IATI Migrator (experimental!)</h1>
-    <p class="lead text-muted">Migrate IATI v1.0x activity files to the latest version of the IATI standard.</p>
+    <h1 class="jumbotron-heading">IATI Transformer (experimental!)</h1>
+    <p class="lead text-muted">Transform IATI v1.0x activity files to the latest version of the IATI standard.</p>
   </div>
 </section>
-
 
 <div class="container">
   <div class="row">
@@ -28,10 +27,9 @@
       </form>
     </div>
     <div class="col-md-6">
-      <label class="control-label" for="id_result">Migrated IATI v2.03 activity XML:</label>
+      <label class="control-label" for="id_result">Transformed IATI v2.03 activity XML:</label>
       <textarea class="form-control" cols="40" disabled="disabled" id="id_result" name="result" rows="10" title="">{{ result }}</textarea>
     </div>
   </div>
 </div>
 {% endblock %}
-

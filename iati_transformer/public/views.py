@@ -51,7 +51,7 @@ def home():
     if not dataset.validate_xml():
         error_msg = 'There was a problem! Result data not valid XML.'
     elif not dataset.validate_iati():
-        error_msg = 'The data was migrated, but has schema validation issues'
+        error_msg = 'The data was transformed, but has schema validation issues'
         match_re = r'the order of elements is important\. .*? but ' + \
                    r'(.*?) is expected\.$'
         match = re.search(match_re, dataset.validate_iati().errors[0].details)
@@ -61,14 +61,14 @@ def home():
         else:
             error_msg += '.'
     elif not dataset.validate_codelists():
-        error_msg = 'The data was migrated, but has codelist issues.'
+        error_msg = 'The data was transformed, but has codelist issues.'
 
     if error_msg:
         flash(error_msg, 'danger')
         return render_template('public/home.html',
                                source=source, result=result)
 
-    flash('Data successfully migrated!', 'success')
+    flash('Data successfully transformed!', 'success')
     return render_template('public/home.html',
                            source=source,
                            result=result)

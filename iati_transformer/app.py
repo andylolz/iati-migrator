@@ -5,7 +5,7 @@ from . import public
 from .extensions import cache, csrf_protect, debug_toolbar
 
 
-def create_app(config_object='iati_migrator.settings'):
+def create_app(config_object='iati_transformer.settings'):
     """Application factory.
 
     As explained here:

@@ -1,4 +1,4 @@
-IATI Migrator (experimental!)
-=============================
+IATI Transformer (experimental!)
+================================
 
-Migrate IATI v1.0x activity data to v2.03.
+Transform IATI v1.0x activity data into v2.03.
