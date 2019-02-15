@@ -52,10 +52,12 @@ def home():
         error_msg = 'There was a problem! Result data not valid XML.'
     elif not dataset.validate_iati():
         error_msg = 'The data was migrated, but has schema validation issues'
-        match_re = re.compile(r'Expected is \( ([^ ]+) \)')
-        match = match_re.search(dataset.validate_iati().errors[0].original_msg)
+        match_re = r'the order of elements is important\. .*? but ' + \
+                   r'(.*?) is expected\.$'
+        match = re.search(match_re, dataset.validate_iati().errors[0].details)
         if match:
-            error_msg += ' (e.g. it\'s missing a `{}` element.)'.format(match.group(1))
+            error_msg += ' (e.g. an activity is missing {}.)'.format(
+                match.group(1))
         else:
             error_msg += '.'
     elif not dataset.validate_codelists():
