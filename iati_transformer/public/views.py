@@ -32,8 +32,8 @@ def home():
                            result=response['result'])
 
 
-@blueprint.route('/convert')
-def convert():
+@blueprint.route('/transform')
+def transform():
     url = request.args.get('url')
     r = requests.get(url)
     source = r.content.decode()
