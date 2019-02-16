@@ -12,23 +12,19 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
-      <form action="{{ url_for('public.home') }}" method="POST">
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+    <div class="col-md-12">
+      <form action="{{ url_for('public.transform') }}" method="GET">
         <div class="form-group">
-          <label class="control-label" for="id_source">Paste IATI v1.0x activity XML:</label>
-          <textarea class="form-control" cols="40" id="id_source" name="source" placeholder="<iati-activities>…" required="required" rows="10" title="">{{ source }}</textarea>
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary">
-            Submit
-          </button>
+          <label class="control-label" for="id_url">URL for an IATI v1.0x activity file:</label>
+          <div class="input-group">
+            <input type="url" class="form-control" cols="40" id="id_url" name="url" placeholder="https://…" required="required" rows="10" title="" />
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+          </div>
         </div>
       </form>
-    </div>
-    <div class="col-md-6">
-      <label class="control-label" for="id_result">Transformed IATI v2.03 activity XML:</label>
-      <textarea class="form-control" cols="40" disabled="disabled" id="id_result" name="result" rows="10" title="">{{ result }}</textarea>
+      <p><a href="{{ url_for('public.paste') }}">Paste XML instead.</a></p>
     </div>
   </div>
 </div>
