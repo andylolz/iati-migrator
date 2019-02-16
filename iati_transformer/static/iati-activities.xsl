@@ -63,7 +63,10 @@
                     <participating-org>
                         <xsl:if test="@ref"><xsl:attribute name="ref"><xsl:value-of select="@ref" /></xsl:attribute></xsl:if>
                         <xsl:if test="@type"><xsl:attribute name="type"><xsl:value-of select="@type" /></xsl:attribute></xsl:if>
-                        <xsl:if test="@role"><xsl:attribute name="role"><xsl:value-of select="@role" /></xsl:attribute></xsl:if>
+                        <xsl:if test="@role = 'Funding'"><xsl:attribute name="role">1</xsl:attribute></xsl:if>
+                        <xsl:if test="@role = 'Accountable'"><xsl:attribute name="role">2</xsl:attribute></xsl:if>
+                        <xsl:if test="@role = 'Extending'"><xsl:attribute name="role">3</xsl:attribute></xsl:if>
+                        <xsl:if test="@role = 'Implementing'"><xsl:attribute name="role">4</xsl:attribute></xsl:if>
                             <narrative>
                                 <xsl:if test="@xml:lang"><xsl:attribute name="xml:lang"><xsl:value-of select="@xml:lang" /></xsl:attribute></xsl:if>
                                 <xsl:value-of select="text()" />
