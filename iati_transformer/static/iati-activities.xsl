@@ -419,7 +419,6 @@
                         <xsl:if test="capital-spend/@percentage"><xsl:attribute name="percentage"><xsl:value-of select="capital-spend/@percentage" /></xsl:attribute></xsl:if>
                     </capital-spend>
                 </xsl:if>
-              </iati-activity>
 
                 <xsl:for-each select="transaction">
                     <transaction>
@@ -771,6 +770,7 @@
                         </fss>
                     </xsl:for-each>
                 </xsl:for-each>
+              </iati-activity>
             </xsl:for-each>
         </iati-activities>
     </xsl:template>
