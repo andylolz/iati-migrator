@@ -538,6 +538,9 @@
                     <xsl:if test="activity-website">
                         <document-link format="text/html">
                             <xsl:attribute name="url"><xsl:value-of select="activity-website/text()" /></xsl:attribute>
+                            <title>
+                                <narrative xml:lang="en">Activity website</narrative>
+                            </title>
                             <category code="A12" />
                         </document-link>
                     </xsl:if>
