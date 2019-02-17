@@ -5,7 +5,6 @@
     <xsl:template match="iati-organisations">
         <iati-organisations version="2.03">
             <xsl:if test="@generated-datetime"><xsl:attribute name="generated-datetime"><xsl:value-of select="@generated-datetime" /></xsl:attribute></xsl:if>
-            <xsl:if test="@version"><xsl:attribute name="version"><xsl:value-of select="@version" /></xsl:attribute></xsl:if>
 
             <xsl:for-each select="iati-organisation">
                 <iati-organisation>
