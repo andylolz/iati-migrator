@@ -30,7 +30,10 @@ def validate(source):
             'result': result,
         }
 
-    xsd_path = join(basedir, '..', 'static', 'iati-activities.xsl')
+    if dataset.filetype == 'activity':
+        xsd_path = join(basedir, '..', 'static', 'iati-activities.xsl')
+    else:
+        xsd_path = join(basedir, '..', 'static', 'iati-organisations.xsl')
     transform = etree.XSLT(etree.parse(xsd_path))
     transformed = transform(dataset.etree)
     result = str(transformed)
