@@ -6,7 +6,7 @@
 <section class="jumbotron text-center">
   <div class="container">
     <h1 class="jumbotron-heading">IATI Transformer (experimental!)</h1>
-    <p class="lead text-muted">Transform IATI v1.0x activity files to the latest version of the IATI standard.</p>
+    <p class="lead text-muted">Transform IATI v1.0x data to the latest version of the IATI standard.</p>
   </div>
 </section>
 
@@ -15,7 +15,7 @@
     <div class="col-md-12">
       <form action="{{ url_for('public.transform') }}" method="GET">
         <div class="form-group">
-          <label class="control-label" for="id_url">URL for an IATI v1.0x activity file:</label>
+          <label class="control-label" for="id_url">URL for an IATI v1.0x file:</label>
           <div class="input-group">
             <input type="url" class="form-control" cols="40" id="id_url" name="url" placeholder="https://…" required="required" rows="10" title="" />
             <div class="input-group-append">
