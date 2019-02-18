@@ -247,7 +247,7 @@
                                 </activity-description>
                             </xsl:if>
 
-                            <xsl:if test="administrative">
+                            <xsl:if test="administrative and administrative/@code">
                                 <administrative>
                                     <xsl:for-each select="administrative">
                                         <xsl:if test="@code"><xsl:attribute name="code"><xsl:value-of select="@code" /></xsl:attribute></xsl:if>
