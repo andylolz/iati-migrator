@@ -300,14 +300,14 @@
                     <xsl:for-each select="sector">
                         <sector>
                             <xsl:if test="@code"><xsl:attribute name="code"><xsl:value-of select="@code" /></xsl:attribute></xsl:if>
-                            <xsl:if test="@vocabulary = 'COFOG'"><xsl:attribute name="vocabulary">3</xsl:attribute></xsl:if>
                             <xsl:if test="@vocabulary = 'DAC'"><xsl:attribute name="vocabulary">1</xsl:attribute></xsl:if>
                             <xsl:if test="@vocabulary = 'DAC-3'"><xsl:attribute name="vocabulary">2</xsl:attribute></xsl:if>
+                            <xsl:if test="@vocabulary = 'COFOG'"><xsl:attribute name="vocabulary">3</xsl:attribute></xsl:if>
                             <xsl:if test="@vocabulary = 'NACE'"><xsl:attribute name="vocabulary">4</xsl:attribute></xsl:if>
                             <xsl:if test="@vocabulary = 'NTEE'"><xsl:attribute name="vocabulary">5</xsl:attribute></xsl:if>
                             <xsl:if test="@vocabulary = 'ADT'"><xsl:attribute name="vocabulary">6</xsl:attribute></xsl:if>
-                            <xsl:if test="@vocabulary = 'RO'"><xsl:attribute name="vocabulary">99</xsl:attribute></xsl:if>
                             <xsl:if test="@vocabulary = 'RO2'"><xsl:attribute name="vocabulary">98</xsl:attribute></xsl:if>
+                            <xsl:if test="@vocabulary = 'RO'"><xsl:attribute name="vocabulary">99</xsl:attribute></xsl:if>
                             <xsl:if test="@percentage"><xsl:attribute name="percentage"><xsl:value-of select="@percentage" /></xsl:attribute></xsl:if>
                             <narrative>
                                 <xsl:if test="@xml:lang"><xsl:attribute name="xml:lang"><xsl:value-of select="@xml:lang" /></xsl:attribute></xsl:if>
