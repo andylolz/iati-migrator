@@ -576,118 +576,120 @@
                     </xsl:if>
 
                     <xsl:for-each select="result">
-                        <xsl:if test="@type"><xsl:attribute name="type"><xsl:value-of select="@type" /></xsl:attribute></xsl:if>
-                        <xsl:if test="@aggregation-status"><xsl:attribute name="aggregation-status"><xsl:value-of select="@aggregation-status" /></xsl:attribute></xsl:if>
+                        <result>
+                            <xsl:if test="@type"><xsl:attribute name="type"><xsl:value-of select="@type" /></xsl:attribute></xsl:if>
+                            <xsl:if test="@aggregation-status"><xsl:attribute name="aggregation-status"><xsl:value-of select="@aggregation-status" /></xsl:attribute></xsl:if>
 
-                        <xsl:if test="title">
-                            <title>
-                                <xsl:for-each select="title">
-                                    <narrative>
-                                        <xsl:if test="@xml:lang"><xsl:attribute name="xml:lang"><xsl:value-of select="@xml:lang" /></xsl:attribute></xsl:if>
-                                        <xsl:value-of select="text()" />
-                                    </narrative>
-                                </xsl:for-each>
-                            </title>
-                        </xsl:if>
-                        <xsl:if test="description">
-                            <description>
-                                <xsl:for-each select="description">
-                                    <narrative>
-                                        <xsl:if test="@xml:lang"><xsl:attribute name="xml:lang"><xsl:value-of select="@xml:lang" /></xsl:attribute></xsl:if>
-                                        <xsl:value-of select="text()" />
-                                    </narrative>
-                                </xsl:for-each>
-                            </description>
-                        </xsl:if>
+                            <xsl:if test="title">
+                                <title>
+                                    <xsl:for-each select="title">
+                                        <narrative>
+                                            <xsl:if test="@xml:lang"><xsl:attribute name="xml:lang"><xsl:value-of select="@xml:lang" /></xsl:attribute></xsl:if>
+                                            <xsl:value-of select="text()" />
+                                        </narrative>
+                                    </xsl:for-each>
+                                </title>
+                            </xsl:if>
+                            <xsl:if test="description">
+                                <description>
+                                    <xsl:for-each select="description">
+                                        <narrative>
+                                            <xsl:if test="@xml:lang"><xsl:attribute name="xml:lang"><xsl:value-of select="@xml:lang" /></xsl:attribute></xsl:if>
+                                            <xsl:value-of select="text()" />
+                                        </narrative>
+                                    </xsl:for-each>
+                                </description>
+                            </xsl:if>
 
-                        <xsl:for-each select="indicator">
-                            <indicator>
-                                <xsl:if test="@measure"><xsl:attribute name="measure"><xsl:value-of select="@measure" /></xsl:attribute></xsl:if>
-                                <xsl:if test="@ascending"><xsl:attribute name="ascending"><xsl:value-of select="@ascending" /></xsl:attribute></xsl:if>
-                                <xsl:if test="title">
-                                    <title>
-                                        <xsl:for-each select="title">
-                                            <narrative>
-                                                <xsl:if test="@xml:lang"><xsl:attribute name="xml:lang"><xsl:value-of select="@xml:lang" /></xsl:attribute></xsl:if>
-                                                <xsl:value-of select="text()" />
-                                            </narrative>
-                                        </xsl:for-each>
-                                    </title>
-                                </xsl:if>
-                                <xsl:if test="description">
-                                    <description>
-                                        <xsl:for-each select="description">
-                                            <narrative>
-                                                <xsl:if test="@xml:lang"><xsl:attribute name="xml:lang"><xsl:value-of select="@xml:lang" /></xsl:attribute></xsl:if>
-                                                <xsl:value-of select="text()" />
-                                            </narrative>
-                                        </xsl:for-each>
-                                    </description>
-                                </xsl:if>
-                                <xsl:for-each select="baseline">
-                                    <baseline>
-                                        <xsl:if test="@year"><xsl:attribute name="year"><xsl:value-of select="@year" /></xsl:attribute></xsl:if>
-                                        <xsl:if test="@value"><xsl:attribute name="value"><xsl:value-of select="@value" /></xsl:attribute></xsl:if>
-                                        <xsl:if test="comment">
-                                            <comment>
-                                                <xsl:for-each select="comment">
-                                                    <narrative>
-                                                        <xsl:if test="@xml:lang"><xsl:attribute name="xml:lang"><xsl:value-of select="@xml:lang" /></xsl:attribute></xsl:if>
-                                                        <xsl:value-of select="text()" />
-                                                    </narrative>
-                                                </xsl:for-each>
-                                            </comment>
-                                        </xsl:if>
-                                    </baseline>
-                                </xsl:for-each>
-                                <xsl:for-each select="period">
-                                    <period>
-                                        <xsl:if test="period-start">
-                                            <period-start>
-                                                <xsl:if test="period-start/@iso-date"><xsl:attribute name="iso-date"><xsl:value-of select="period-start/@iso-date" /></xsl:attribute></xsl:if>
-                                            </period-start>
-                                        </xsl:if>
-                                        <xsl:if test="period-end">
-                                            <period-end>
-                                                <xsl:if test="period-end/@iso-date"><xsl:attribute name="iso-date"><xsl:value-of select="period-end/@iso-date" /></xsl:attribute></xsl:if>
-                                            </period-end>
-                                        </xsl:if>
-                                        <xsl:for-each select="target">
-                                            <target>
-                                                <xsl:if test="@year"><xsl:attribute name="year"><xsl:value-of select="@year" /></xsl:attribute></xsl:if>
-                                                <xsl:if test="@value"><xsl:attribute name="value"><xsl:value-of select="@value" /></xsl:attribute></xsl:if>
-                                                <xsl:if test="comment">
-                                                    <comment>
-                                                        <xsl:for-each select="comment">
-                                                            <narrative>
-                                                                <xsl:if test="@xml:lang"><xsl:attribute name="xml:lang"><xsl:value-of select="@xml:lang" /></xsl:attribute></xsl:if>
-                                                                <xsl:value-of select="text()" />
-                                                            </narrative>
-                                                        </xsl:for-each>
-                                                    </comment>
-                                                </xsl:if>
-                                            </target>
-                                        </xsl:for-each>
-                                        <xsl:for-each select="actual">
-                                            <actual>
-                                                <xsl:if test="@year"><xsl:attribute name="year"><xsl:value-of select="@year" /></xsl:attribute></xsl:if>
-                                                <xsl:if test="@value"><xsl:attribute name="value"><xsl:value-of select="@value" /></xsl:attribute></xsl:if>
-                                                <xsl:if test="comment">
-                                                    <comment>
-                                                        <xsl:for-each select="comment">
-                                                            <narrative>
-                                                                <xsl:if test="@xml:lang"><xsl:attribute name="xml:lang"><xsl:value-of select="@xml:lang" /></xsl:attribute></xsl:if>
-                                                                <xsl:value-of select="text()" />
-                                                            </narrative>
-                                                        </xsl:for-each>
-                                                    </comment>
-                                                </xsl:if>
-                                            </actual>
-                                        </xsl:for-each>
-                                    </period>
-                                </xsl:for-each>
-                            </indicator>
-                        </xsl:for-each>
+                            <xsl:for-each select="indicator">
+                                <indicator>
+                                    <xsl:if test="@measure"><xsl:attribute name="measure"><xsl:value-of select="@measure" /></xsl:attribute></xsl:if>
+                                    <xsl:if test="@ascending"><xsl:attribute name="ascending"><xsl:value-of select="@ascending" /></xsl:attribute></xsl:if>
+                                    <xsl:if test="title">
+                                        <title>
+                                            <xsl:for-each select="title">
+                                                <narrative>
+                                                    <xsl:if test="@xml:lang"><xsl:attribute name="xml:lang"><xsl:value-of select="@xml:lang" /></xsl:attribute></xsl:if>
+                                                    <xsl:value-of select="text()" />
+                                                </narrative>
+                                            </xsl:for-each>
+                                        </title>
+                                    </xsl:if>
+                                    <xsl:if test="description">
+                                        <description>
+                                            <xsl:for-each select="description">
+                                                <narrative>
+                                                    <xsl:if test="@xml:lang"><xsl:attribute name="xml:lang"><xsl:value-of select="@xml:lang" /></xsl:attribute></xsl:if>
+                                                    <xsl:value-of select="text()" />
+                                                </narrative>
+                                            </xsl:for-each>
+                                        </description>
+                                    </xsl:if>
+                                    <xsl:for-each select="baseline">
+                                        <baseline>
+                                            <xsl:if test="@year"><xsl:attribute name="year"><xsl:value-of select="@year" /></xsl:attribute></xsl:if>
+                                            <xsl:if test="@value"><xsl:attribute name="value"><xsl:value-of select="@value" /></xsl:attribute></xsl:if>
+                                            <xsl:if test="comment">
+                                                <comment>
+                                                    <xsl:for-each select="comment">
+                                                        <narrative>
+                                                            <xsl:if test="@xml:lang"><xsl:attribute name="xml:lang"><xsl:value-of select="@xml:lang" /></xsl:attribute></xsl:if>
+                                                            <xsl:value-of select="text()" />
+                                                        </narrative>
+                                                    </xsl:for-each>
+                                                </comment>
+                                            </xsl:if>
+                                        </baseline>
+                                    </xsl:for-each>
+                                    <xsl:for-each select="period">
+                                        <period>
+                                            <xsl:if test="period-start">
+                                                <period-start>
+                                                    <xsl:if test="period-start/@iso-date"><xsl:attribute name="iso-date"><xsl:value-of select="period-start/@iso-date" /></xsl:attribute></xsl:if>
+                                                </period-start>
+                                            </xsl:if>
+                                            <xsl:if test="period-end">
+                                                <period-end>
+                                                    <xsl:if test="period-end/@iso-date"><xsl:attribute name="iso-date"><xsl:value-of select="period-end/@iso-date" /></xsl:attribute></xsl:if>
+                                                </period-end>
+                                            </xsl:if>
+                                            <xsl:for-each select="target">
+                                                <target>
+                                                    <xsl:if test="@year"><xsl:attribute name="year"><xsl:value-of select="@year" /></xsl:attribute></xsl:if>
+                                                    <xsl:if test="@value"><xsl:attribute name="value"><xsl:value-of select="@value" /></xsl:attribute></xsl:if>
+                                                    <xsl:if test="comment">
+                                                        <comment>
+                                                            <xsl:for-each select="comment">
+                                                                <narrative>
+                                                                    <xsl:if test="@xml:lang"><xsl:attribute name="xml:lang"><xsl:value-of select="@xml:lang" /></xsl:attribute></xsl:if>
+                                                                    <xsl:value-of select="text()" />
+                                                                </narrative>
+                                                            </xsl:for-each>
+                                                        </comment>
+                                                    </xsl:if>
+                                                </target>
+                                            </xsl:for-each>
+                                            <xsl:for-each select="actual">
+                                                <actual>
+                                                    <xsl:if test="@year"><xsl:attribute name="year"><xsl:value-of select="@year" /></xsl:attribute></xsl:if>
+                                                    <xsl:if test="@value"><xsl:attribute name="value"><xsl:value-of select="@value" /></xsl:attribute></xsl:if>
+                                                    <xsl:if test="comment">
+                                                        <comment>
+                                                            <xsl:for-each select="comment">
+                                                                <narrative>
+                                                                    <xsl:if test="@xml:lang"><xsl:attribute name="xml:lang"><xsl:value-of select="@xml:lang" /></xsl:attribute></xsl:if>
+                                                                    <xsl:value-of select="text()" />
+                                                                </narrative>
+                                                            </xsl:for-each>
+                                                        </comment>
+                                                    </xsl:if>
+                                                </actual>
+                                            </xsl:for-each>
+                                        </period>
+                                    </xsl:for-each>
+                                </indicator>
+                            </xsl:for-each>
+                        </result>
                     </xsl:for-each>
 
                     <xsl:for-each select="crs-add">
