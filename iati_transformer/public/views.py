@@ -68,7 +68,6 @@ def transform():
 
     return render_template('public/paste.html',
                            source=source,
-                           validate_url=validate_url,
                            result=response['result'])
 
 
