@@ -52,6 +52,9 @@ def transform():
     if request.args.get('fallback') == 'true':
         return Response(source, mimetype='text/xml')
 
+    if request.args.get('force') == 'true':
+        return Response(response['result'], mimetype='text/xml')
+
     flash(response['flash_msg'], 'danger')
 
     if not response['transformed']:
