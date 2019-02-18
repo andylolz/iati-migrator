@@ -2,7 +2,8 @@
 
 from io import BytesIO
 
-from flask import Blueprint, render_template, request, flash, Response
+from flask import Blueprint, render_template, request, redirect, \
+    flash, Response, url_for
 import requests
 
 from .utils import validate
@@ -51,8 +52,11 @@ def transform():
     if request.args.get('fallback') == 'true':
         return Response(source, mimetype='text/xml')
 
-    flash_msg_type = 'success' if response['success'] else 'danger'
-    flash(response['flash_msg'], flash_msg_type)
+    flash(response['flash_msg'], 'danger')
+
+    if not response['transformed']:
+        return redirect(url_for('public.home'))
+
     return render_template('public/paste.html',
                            source=source,
                            result=response['result'])

@@ -26,6 +26,7 @@ def validate(source):
     if flash_msg:
         return {
             'success': False,
+            'transformed': False,
             'flash_msg': flash_msg,
             'result': result,
         }
@@ -59,12 +60,14 @@ def validate(source):
     if flash_msg:
         return {
             'success': False,
+            'transformed': True,
             'flash_msg': flash_msg,
             'result': result,
         }
 
     return {
         'success': True,
+        'transformed': True,
         'flash_msg': 'Data successfully transformed!',
         'result': result,
     }
