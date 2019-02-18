@@ -37,6 +37,7 @@ def paste():
                            result=response['result'])
 
 
+@blueprint.route('/transform.xml')
 @blueprint.route('/transform')
 def transform():
     url = request.args.get('url')
