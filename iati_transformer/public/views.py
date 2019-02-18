@@ -1,5 +1,6 @@
 """Public section, including homepage and signup."""
 
+from urllib.parse import urlencode
 from io import BytesIO
 
 from flask import Blueprint, render_template, request, redirect, \
@@ -38,7 +39,6 @@ def paste():
                            result=response['result'])
 
 
-@blueprint.route('/transform.xml')
 @blueprint.route('/transform')
 def transform():
     url = request.args.get('url')
@@ -52,14 +52,30 @@ def transform():
     if request.args.get('fallback') == 'true':
         return Response(source, mimetype='text/xml')
 
-    if request.args.get('force') == 'true':
-        return Response(response['result'], mimetype='text/xml')
-
-    flash(response['flash_msg'], 'danger')
-
     if not response['transformed']:
+        flash(response['flash_msg'], 'danger')
         return redirect(url_for('public.home'))
+
+    source_url = url_for('public.force_transform', url=url, _external=True)
+    validate_url = 'http://iati.cove.opendataservices.coop/?' + \
+        urlencode({'source_url': source_url})
+
+    msg = '{} <a href="{}" target="_blank">Validate with CoVE</a>.'.format(
+        response['flash_msg'],
+        validate_url,
+    )
+    flash(msg, 'danger')
 
     return render_template('public/paste.html',
                            source=source,
+                           validate_url=validate_url,
                            result=response['result'])
+
+
+@blueprint.route('/transform.xml')
+def force_transform():
+    url = request.args.get('url')
+    r = requests.get(url)
+    source_data = BytesIO(r.content)
+    response = validate(source_data)
+    return Response(response['result'], mimetype='text/xml')
