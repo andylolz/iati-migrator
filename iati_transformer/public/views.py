@@ -60,7 +60,7 @@ def transform():
     validate_url = 'http://iati.cove.opendataservices.coop/?' + \
         urlencode({'source_url': source_url})
 
-    msg = '{} <a href="{}" target="_blank">Validate with CoVE</a>.'.format(
+    msg = '{} <a href="{}" target="_blank">Validate transformed data with CoVE</a>.'.format(
         response['flash_msg'],
         validate_url,
     )
