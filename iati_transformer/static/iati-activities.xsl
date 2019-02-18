@@ -316,10 +316,10 @@
                         </sector>
                     </xsl:for-each>
 
-                    <xsl:for-each select="country-budget-items">
+                    <xsl:if test="country-budget-items">
                         <country-budget-items>
-                            <xsl:if test="@vocabulary"><xsl:attribute name="vocabulary"><xsl:value-of select="@vocabulary" /></xsl:attribute></xsl:if>
-                            <xsl:for-each select="budget-item">
+                            <xsl:if test="country-budget-items/@vocabulary"><xsl:attribute name="vocabulary"><xsl:value-of select="country-budget-items/@vocabulary" /></xsl:attribute></xsl:if>
+                            <xsl:for-each select="country-budget-items/budget-item">
                                 <budget-item>
                                     <xsl:if test="@code"><xsl:attribute name="code"><xsl:value-of select="@code" /></xsl:attribute></xsl:if>
                                     <xsl:if test="description">
@@ -336,7 +336,7 @@
                                 </budget-item>
                             </xsl:for-each>
                         </country-budget-items>
-                    </xsl:for-each>
+                    </xsl:if>
 
                     <xsl:for-each select="policy-marker">
                         <policy-marker>
