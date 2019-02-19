@@ -20,8 +20,6 @@ def validate(source):
         flash_msg = 'Input data is not IATI v1.0x.'
     elif not dataset.validate_iati():
         flash_msg = 'Input data is not valid to the IATI schema.'
-    elif not dataset.validate_codelists():
-        flash_msg = 'Input data uses invalid codelist values.'
 
     if flash_msg:
         return {
