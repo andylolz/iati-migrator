@@ -4,7 +4,7 @@ Flask==1.0.2
 # Application
 requests==2.21.0
 lxml==4.3.1
--e git+https://github.com/pwyf/iatikit.git@dev#egg=iatikit
+iatikit==2.0.6
 
 # Forms
 Flask-WTF==0.14.2
