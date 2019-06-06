@@ -49,7 +49,7 @@ def validate(source):
                    r'(.*?) is expected\.$'
         match = re.search(match_re, dataset.validate_iati().errors[0].details)
         if match:
-            flash_msg += ' (e.g. an activity is missing {}.)'.format(
+            flash_msg += ' (e.g. missing {}.)'.format(
                 match.group(1))
         else:
             flash_msg += '.'
