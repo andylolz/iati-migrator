@@ -11,6 +11,25 @@
 </section>
 
 <div class="container">
+
+  {% if source_url %}
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label class="control-label" for="transformed-url">Direct link to transformed data:</label>
+        <div class="input-group">
+          <input type="text" class="form-control" readonly="readonly" name="transformed-url" id="transformed-url" value="{{ source_url }}">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button" id="copy-button" title="copied!" data-clipboard-target="#transformed-url">
+              Copy
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
   <div class="row">
     <div class="col-md-6">
       <form action="{{ url_for('public.paste') }}" method="POST">
