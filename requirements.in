@@ -3,7 +3,7 @@ Flask==1.0.2
 
 # Application
 requests==2.21.0
-lxml==4.3.1
+lxml==4.6.2
 iatikit==2.0.6
 
 # Forms
