@@ -14,7 +14,7 @@ iatikit==2.0.6
 idna==2.8
 itsdangerous==1.1.0
 jinja2==2.11.2
-lxml==4.6.2
+lxml==4.6.3
 markupsafe==1.1.1
 marshmallow==3.7.1
 python-dotenv==0.14.0
