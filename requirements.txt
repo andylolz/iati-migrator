@@ -6,17 +6,17 @@
 #
 blinker==1.4
     # via flask-debugtoolbar
-certifi==2020.6.20
+certifi==2021.10.8
     # via requests
 chardet==3.0.4
     # via requests
-click==7.1.2
+click==8.0.3
     # via flask
-configparser==5.0.0
+configparser==5.1.0
     # via iatikit
 environs==4.0.0
     # via -r requirements.in
-flask-caching==1.9.0
+flask-caching==1.10.1
     # via -r requirements.in
 flask-debugtoolbar==0.10.1
     # via -r requirements.in
@@ -28,47 +28,49 @@ flask==1.0.2
     #   flask-caching
     #   flask-debugtoolbar
     #   flask-wtf
-future==0.18.2
-    # via iatikit
-gunicorn==20.0.4
+gunicorn==20.1.0
     # via -r requirements.in
-iatikit==2.0.6
+iatikit==3.2.0
     # via -r requirements.in
 idna==2.8
     # via requests
-itsdangerous==1.1.0
+importlib-metadata==4.8.2
+    # via click
+itsdangerous==2.0.1
     # via
     #   flask
     #   flask-debugtoolbar
     #   flask-wtf
-jinja2==2.11.3
+jinja2==3.0.3
     # via flask
 lxml==4.6.3
     # via
     #   -r requirements.in
     #   iatikit
-markupsafe==1.1.1
+markupsafe==2.0.1
     # via
     #   jinja2
     #   wtforms
-marshmallow==3.7.1
+marshmallow==3.14.1
     # via environs
-python-dotenv==0.14.0
+python-dotenv==0.19.2
     # via environs
 requests==2.21.0
     # via
     #   -r requirements.in
     #   iatikit
-unicodecsv==0.14.1
-    # via iatikit
+typing-extensions==4.0.0
+    # via importlib-metadata
 urllib3==1.24.3
     # via requests
-werkzeug==1.0.1
+werkzeug==2.0.2
     # via
     #   flask
     #   flask-debugtoolbar
-wtforms==2.3.3
+wtforms==3.0.0
     # via flask-wtf
+zipp==3.6.0
+    # via importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
