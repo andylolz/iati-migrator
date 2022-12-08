@@ -6,7 +6,7 @@
 #
 blinker==1.4
     # via flask-debugtoolbar
-certifi==2021.10.8
+certifi==2022.12.7
     # via requests
 chardet==3.0.4
     # via requests
@@ -14,13 +14,9 @@ click==8.0.3
     # via flask
 configparser==5.1.0
     # via iatikit
+dataclasses==0.8
+    # via werkzeug
 environs==4.0.0
-    # via -r requirements.in
-flask-caching==1.10.1
-    # via -r requirements.in
-flask-debugtoolbar==0.10.1
-    # via -r requirements.in
-flask-wtf==0.14.3
     # via -r requirements.in
 flask==1.0.2
     # via
@@ -28,6 +24,12 @@ flask==1.0.2
     #   flask-caching
     #   flask-debugtoolbar
     #   flask-wtf
+flask-caching==1.10.1
+    # via -r requirements.in
+flask-debugtoolbar==0.10.1
+    # via -r requirements.in
+flask-wtf==0.14.3
+    # via -r requirements.in
 gunicorn==20.1.0
     # via -r requirements.in
 iatikit==3.2.0
