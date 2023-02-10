@@ -45,7 +45,7 @@ itsdangerous==2.0.1
     #   flask-wtf
 jinja2==3.0.3
     # via flask
-lxml==4.6.3
+lxml==4.9.1
     # via
     #   -r requirements.in
     #   iatikit
